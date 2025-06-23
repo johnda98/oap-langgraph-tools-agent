@@ -90,7 +90,7 @@ async def create_rag_tool(rag_url: str, collection_id: str, access_token: str):
 
     collection_endpoint = f"{rag_url}/collections/{collection_id}"
     try:
-        async with aiohttp.ClientSession(trust_env=True) as session:
+        async with aiohttp.ClientSession() as session:
             async with session.get(
                 collection_endpoint, headers={"Authorization": f"Bearer {access_token}"}
             ) as response:
@@ -126,7 +126,7 @@ async def create_rag_tool(rag_url: str, collection_id: str, access_token: str):
             payload = {"query": query, "limit": 10}
 
             try:
-                async with aiohttp.ClientSession(trust_env=True) as session:
+                async with aiohttp.ClientSession() as session:
                     async with session.post(
                         search_endpoint,
                         json=payload,
