@@ -92,7 +92,7 @@ async def create_rag_tool(rag_url: str, collection_id: str, access_token: str):
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                collection_endpoint, headers={"Authorization": f"Bearer {access_token}"}
+                collection_endpoint, headers={"ngrok-skip-browser-warning": "69420","Authorization": f"Bearer {access_token}"}
             ) as response:
                 response.raise_for_status()
                 collection_data = await response.json()
@@ -130,7 +130,7 @@ async def create_rag_tool(rag_url: str, collection_id: str, access_token: str):
                     async with session.post(
                         search_endpoint,
                         json=payload,
-                        headers={"Authorization": f"Bearer {access_token}"},
+                        headers={"ngrok-skip-browser-warning": "69420","Authorization": f"Bearer {access_token}"},
                     ) as search_response:
                         search_response.raise_for_status()
                         documents = await search_response.json()
